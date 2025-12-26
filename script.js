@@ -1,4 +1,3 @@
-// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -6,12 +5,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar shrink on scroll
 window.addEventListener('scroll', () => {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Fade in sections
 const sections = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
