@@ -1,23 +1,17 @@
-// Smooth scrolling for navigation links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// Header scroll effect
+// Navbar shrink on scroll
 window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    if (header) {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    }
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Intersection Observer for fade-in animations
+// Fade in sections on scroll/view
 const sections = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -29,15 +23,5 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(sec => observer.observe(sec));
 
-// HERO SECTION FIX: Make hero visible immediately on page load
-window.addEventListener('DOMContentLoaded', () => {
-    const hero = document.getElementById('hero');
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (hero) {
-        hero.classList.add('visible');
-    }
-    if (heroContent) {
-        heroContent.classList.add('visible');
-    }
-});
+// Force hero to be visible immediately (since it's in viewport on load)
+document.querySelector('.hero-content').classList.add('visible');
